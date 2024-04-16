@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "cat-facts-api-tests"
+name = "httpbin org tests"
 version = "0.1.0"
 description = ""
 authors = ["Markella Efthymiou <efthymioumarkella@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"

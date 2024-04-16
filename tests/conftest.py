@@ -9,7 +9,7 @@ load_dotenv()
 
 @pytest.fixture(scope="session")
 def base_url():
-    return os.getenv("API_BASE_URL", "https://youtlink")
+    return os.getenv("API_BASE_URL", "https://httpbin.org")
 
 
 def pytest_configure(config):

@@ -1,4 +1,4 @@
-# API tests
+# HTTPBIN ORG API tests
 <h1 align="center">API automation with pytest & requests</h1>
 
 ## Links
