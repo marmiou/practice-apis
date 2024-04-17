@@ -4,26 +4,47 @@ import requests
 
 USERNAME = 'mark'
 PASSWORD = 'mark27'
-BASIC_AUTH_ENDPOINT = f'/basic-auth/{USERNAME}/{PASSWORD}'
+BASIC_AUTH_ENDPOINT = f'/basic-auth/'
 BEARER_ENDPOINT = '/bearer'
 BEARER_TOKEN = 'LAKSDLKASD'
+HIDDEN_BASIC_AUTH_ENDPOINT = f'/hidden-basic-auth/{USERNAME}/{PASSWORD}'
 
 
 class TestAuth:
 
     @pytest.mark.api
+    # Note: The implementation of basic auth should not include username and password in the path according to standards
     def test_basic_auth(self, base_url):
-        logging.info(f"Getting endpoint: {base_url + BASIC_AUTH_ENDPOINT}")
-        basic_auth_response = requests.get(base_url + BASIC_AUTH_ENDPOINT, auth=(USERNAME, PASSWORD))
-        assert basic_auth_response.status_code == 200
-        assert basic_auth_response.json().get('authenticated') == True
-        assert basic_auth_response.json().get('user') == USERNAME
+        url = base_url + BASIC_AUTH_ENDPOINT
+        logging.info(f"Getting endpoint: {url}")
+        response = requests.get(url, auth=(USERNAME, PASSWORD))
+        assert response.status_code == 200
+        assert response.json().get('authenticated') == True
+        assert response.json().get('user') == USERNAME
+        assert 'Content-Type' in response.headers
+        assert 'Server' in response.headers
 
     @pytest.mark.api
     def test_bearer_auth(self, base_url):
-        logging.info(f"Getting endpoint: {base_url + BEARER_ENDPOINT}")
+        url = base_url + BEARER_ENDPOINT
+        logging.info(f"Getting endpoint: {url}")
         headers = {"Authorization": f"Bearer {BEARER_TOKEN}"}
-        bearer_auth_response = requests.get(base_url + BEARER_ENDPOINT, headers=headers)
-        assert bearer_auth_response.status_code == 200
-        assert bearer_auth_response.json().get('authenticated') == True
-        assert bearer_auth_response.json().get('token') == BEARER_TOKEN
+        response = requests.get(url, headers=headers)
+
+        assert response.status_code == 200
+        assert response.json().get('authenticated') == True
+        assert response.json().get('token') == BEARER_TOKEN
+        assert 'Content-Type' in response.headers
+        assert 'Server' in response.headers
+
+    @pytest.mark.api
+    def test_hidden_basic_auth(self, base_url):
+        url = base_url + HIDDEN_BASIC_AUTH_ENDPOINT
+        logging.info(f"Getting endpoint: {url}")
+        response = requests.get(url, auth=(USERNAME,PASSWORD))
+
+        assert response.status_code == 200
+        assert response.json().get('authenticated') == True
+        assert response.json().get('user') == USERNAME
+        assert 'Content-Type' in response.headers
+        assert 'Server' in response.headers

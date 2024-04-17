@@ -1,5 +1,7 @@
 .idea/
 reports/
 *.pyc
-tests/__pycache__/*
-tests/api/__pycache__/*
+tests/__pycache__/
+tests/api/__pycache__/
+tests/models/__pycache__/
+tests/utils/__pycache__/
