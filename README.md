@@ -69,22 +69,25 @@ allure serve reports/allure-results
 
 ## Test Table
 
-| Test Case Description                                                     | Test Method                                                      |
-|---------------------------------------------------------------------------|------------------------------------------------------------------|
-|               |                        |
-|                    |           |
-|                                              |                                 |
-|  |              |
+| Test Case Description                 | Test File             |
+|---------------------------------------|-----------------------|
+| Tests with different authorizations   | test_auth             |
+| Tests with different http methods     | test_http_methods     |
+| Tests with different image formats    | test_images           |
+| Tests with different response formats | test_response_formats |
+| Most Common Status Codes Reminder     | test_status_code      |
 
 
 ## Built With
 
-- Pytest
-- Requests
-- Allure reporter
-- Poetry
-- iSort
-- Black
+- [Pytest](https://docs.pytest.org/en/8.0.x/)
+- [Requests](https://pypi.org/project/requests/)
+- [Allure reporter](https://allurereport.org/docs/)
+- [Poetry](https://python-poetry.org/)
+- [iSort](https://pycqa.github.io/isort/)
+- [Black](https://pypi.org/project/black/)
+- [BeatifulSoup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+- [Pillow](https://pillow.readthedocs.io/en/stable/)
 
 ## Author
 
