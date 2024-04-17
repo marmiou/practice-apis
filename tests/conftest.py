@@ -17,3 +17,5 @@ def pytest_configure(config):
 
 
 pytest.mark.api = pytest.mark.mark(name="api")
+pytest.mark.images = pytest.mark.mark(name="images")
+

@@ -48,7 +48,7 @@ pytest
 Alternatively, you can run commands within the virtual environment without activating it by using poetry run. 
 For example, to run a specific test:
 ```bash
-poetry run pytest tests/api/test.py
+poetry run pytest tests/api/<test>.py
 ```
 
 Or, to run all e2e tests:
