@@ -1,5 +1,11 @@
-# HTTPBIN ORG API tests
 <h1 align="center">API automation with pytest & requests</h1>
+
+## Thanks for the Help 🙏
+Many thanks to Kenneth Reitz for developing httpbin.org and Ben Howdle for developing reqres.in.
+These are the main pages we used in order to cover some basic aspects of API testing
+
+- [httpbin.org](https://httpbin.org/#/) 
+- [reqres.in](https://reqres.in/)
 
 ## Links
 
