@@ -3,7 +3,6 @@ import logging
 import pytest
 import requests
 
-
 GET_ENDPOINT = "/get"
 PATCH_ENDPOINT = "/patch"
 POST_ENDPOINT = "/post"
@@ -28,7 +27,7 @@ class TestHTTPMethods:
     @pytest.mark.api
     def test_put_should_return_success(self, base_url):
         put_response = requests.put(base_url + PUT_ENDPOINT)
-        logging.info(f"Got post response: {put_response.json()}")
+        logging.info(f"Got put response: {put_response.json()}")
         assert put_response.status_code == 200
 
     @pytest.mark.api
@@ -40,9 +39,5 @@ class TestHTTPMethods:
     @pytest.mark.api
     def test_delete_should_return_success(self, base_url):
         delete_response = requests.delete(base_url + DELETE_ENDPOINT)
-        logging.info(f"Got post response: {delete_response.json()}")
+        logging.info(f"Got delete response: {delete_response.json()}")
         assert delete_response.status_code == 200
-
-
-
-
