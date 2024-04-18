@@ -81,8 +81,11 @@ allure serve reports/allure-results
 | Tests with different http methods     | test_http_methods     |
 | Tests with different image formats    | test_images           |
 | Tests with different response formats | test_response_formats |
-| Most Common Status Codes Reminder     | test_status_code      |
-
+| Most Common Status Codes Reminders    | test_status_code      |
+| Test with POST request                | test_create_users     |
+| Test with DELETE request              | test_delete_users     |
+| Test with GET & list manipulation     | test_list_users       |
+| Test with PUT/PATCH update            | test_update_user      |
 
 ## Built With
 
