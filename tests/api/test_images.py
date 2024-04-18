@@ -20,8 +20,8 @@ class TestImages:
 
     @pytest.mark.api
     @pytest.mark.images
-    def test_jpeg_image(self, base_url):
-        url = base_url + JPEG
+    def test_jpeg_image(self, base_httpbin_url):
+        url = base_httpbin_url + JPEG
         logging.info(f"Getting jpeg image via: {url}")
         response = requests.get(url)
         assert response.status_code == 200
@@ -37,8 +37,8 @@ class TestImages:
 
     @pytest.mark.api
     @pytest.mark.images
-    def test_png_image(self, base_url):
-        url = base_url + PNG
+    def test_png_image(self, base_httpbin_url):
+        url = base_httpbin_url + PNG
         logging.info(f"Getting PNG image via: {url}")
         response = requests.get(url)
 
@@ -58,8 +58,8 @@ class TestImages:
 
     @pytest.mark.api
     @pytest.mark.images
-    def test_svg_image(self, base_url):
-        url = base_url + SVG
+    def test_svg_image(self, base_httpbin_url):
+        url = base_httpbin_url + SVG
         logging.info(f"Getting SVG image via: {url}")
         response = requests.get(url)
 
@@ -82,8 +82,8 @@ class TestImages:
         reason="Test is expected to fail: The content type in the actual response header is svg+xml"
     )
     @pytest.mark.images
-    def test_webp_image(self, base_url):
-        url = base_url + SVG
+    def test_webp_image(self, base_httpbin_url):
+        url = base_httpbin_url + SVG
         logging.info(f"Getting WEBP image via: {url}")
         response = requests.get(url)
 

@@ -12,8 +12,8 @@ HTML = "/html"
 
 class TestResponseFormats:
     @pytest.mark.api
-    def test_get_deny_should_return_expected_data(self, base_url):
-        url = base_url + DENY
+    def test_get_deny_should_return_expected_data(self, base_httpbin_url):
+        url = base_httpbin_url + DENY
         logging.info(f"Endpoint{url}")
         response = requests.get(url)
         assert response.status_code == 200
@@ -35,8 +35,8 @@ class TestResponseFormats:
         ), f"Expected error message not found in response: {error_message}"
 
     @pytest.mark.skip
-    def test_get_xml_should_return_expected_data(self, base_url):
-        url = base_url + XML
+    def test_get_xml_should_return_expected_data(self, base_httpbin_url):
+        url = base_httpbin_url + XML
         logging.info(f"Endpoint: {url}")
         response = requests.get(url)
         logging.info(response.content)
@@ -74,8 +74,8 @@ class TestResponseFormats:
 
     # WIP: Test failing if we assert body, div or p, due to indentation difference in the <p></p>
     @pytest.mark.api
-    def test_get_html_should_return_expected_data(self, base_url):
-        url = base_url + "/html"
+    def test_get_html_should_return_expected_data(self, base_httpbin_url):
+        url = base_httpbin_url + "/html"
         logging.info(f"Endpoint: {url}")
         response = requests.get(url)
         logging.info(f"THIS IS THE CONTENT: {response.content}")

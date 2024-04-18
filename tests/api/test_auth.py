@@ -16,8 +16,8 @@ class TestAuth:
     @pytest.mark.api
     # Note: The implementation of basic auth should not include username and password in the endpoint path according
     # to standards. However, httpbin requires it so the user can specify their own credentials.
-    def test_basic_auth(self, base_url):
-        url = base_url + BASIC_AUTH_ENDPOINT
+    def test_basic_auth(self, base_httpbin_url):
+        url = base_httpbin_url + BASIC_AUTH_ENDPOINT
         logging.info(f"Getting endpoint: {url}")
         response = requests.get(url, auth=(USERNAME, PASSWORD))
         assert response.status_code == 200
@@ -27,8 +27,8 @@ class TestAuth:
         assert "Server" in response.headers
 
     @pytest.mark.api
-    def test_bearer_auth(self, base_url):
-        url = base_url + BEARER_ENDPOINT
+    def test_bearer_auth(self, base_httpbin_url):
+        url = base_httpbin_url + BEARER_ENDPOINT
         logging.info(f"Getting endpoint: {url}")
         headers = {"Authorization": f"Bearer {BEARER_TOKEN}"}
         response = requests.get(url, headers=headers)
@@ -40,8 +40,8 @@ class TestAuth:
         assert "Server" in response.headers
 
     @pytest.mark.api
-    def test_hidden_basic_auth(self, base_url):
-        url = base_url + HIDDEN_BASIC_AUTH_ENDPOINT
+    def test_hidden_basic_auth(self, base_httpbin_url):
+        url = base_httpbin_url + HIDDEN_BASIC_AUTH_ENDPOINT
         logging.info(f"Getting endpoint: {url}")
         response = requests.get(url, auth=(USERNAME, PASSWORD))
 
