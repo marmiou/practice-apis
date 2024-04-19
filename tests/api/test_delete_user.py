@@ -1,15 +1,16 @@
 import logging
+
 import pytest
 import requests
 from faker import Faker
 
-LIST_API = '/api/users'
-SINGLE_USER_API = '/api/user/'
+LIST_API = "/api/users"
+SINGLE_USER_API = "/api/user/"
 
 
 class TestDeleteUser:
     @pytest.fixture(scope="session")
-    def create_user_fixture(self,base_reqres_url):
+    def create_user_fixture(self, base_reqres_url):
         def _create_user():
             fake = Faker()
             url = base_reqres_url + LIST_API
@@ -17,6 +18,7 @@ class TestDeleteUser:
             response = requests.post(url, json=request_body)
             assert response.status_code == 201
             return response.json()
+
         return _create_user
 
     @pytest.mark.api

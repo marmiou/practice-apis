@@ -37,7 +37,9 @@ class TestStatusCodes:
         assert response.status_code == codes
 
     @pytest.mark.api
-    def test_delete_status_code_should_return_success_no_content(self, base_httpbin_url):
+    def test_delete_status_code_should_return_success_no_content(
+        self, base_httpbin_url
+    ):
         codes = 204
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -92,7 +94,9 @@ class TestStatusCodes:
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_method_not_allowed(self, base_httpbin_url):
+    def test_delete_status_code_should_return_method_not_allowed(
+        self, base_httpbin_url
+    ):
         codes = 405
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -106,7 +110,9 @@ class TestStatusCodes:
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_proxy_auth_required(self, base_httpbin_url):
+    def test_delete_status_code_should_return_proxy_auth_required(
+        self, base_httpbin_url
+    ):
         codes = 407
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -127,7 +133,9 @@ class TestStatusCodes:
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_unsupported_media_type(self, base_httpbin_url):
+    def test_delete_status_code_should_return_unsupported_media_type(
+        self, base_httpbin_url
+    ):
         codes = 415
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -135,7 +143,9 @@ class TestStatusCodes:
         assert response.status_code == codes
 
     # Server Error Codes
-    def test_delete_status_code_should_return_internal_server_error(self, base_httpbin_url):
+    def test_delete_status_code_should_return_internal_server_error(
+        self, base_httpbin_url
+    ):
         codes = 500
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -156,7 +166,9 @@ class TestStatusCodes:
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_service_unavailable(self, base_httpbin_url):
+    def test_delete_status_code_should_return_service_unavailable(
+        self, base_httpbin_url
+    ):
         codes = 503
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
@@ -170,14 +182,18 @@ class TestStatusCodes:
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_version_not_supported(self, base_httpbin_url):
+    def test_delete_status_code_should_return_version_not_supported(
+        self, base_httpbin_url
+    ):
         codes = 505
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")
         response = requests.delete(url)
         assert response.status_code == codes
 
-    def test_delete_status_code_should_return_insufficient_storage(self, base_httpbin_url):
+    def test_delete_status_code_should_return_insufficient_storage(
+        self, base_httpbin_url
+    ):
         codes = 507
         url = f"{base_httpbin_url}{STATUS_ENDPOINT}{codes}"
         logging.info(f"Endpoint: {url}")

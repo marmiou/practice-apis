@@ -1,10 +1,10 @@
 import logging
 import os
-import requests
-from faker import Faker
 
 import pytest
+import requests
 from dotenv import load_dotenv
+from faker import Faker
 
 load_dotenv()
 
