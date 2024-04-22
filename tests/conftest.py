@@ -19,6 +19,16 @@ def base_reqres_url():
     return os.getenv("API_BASE_URL", "https://reqres.in")
 
 
+@pytest.fixture()
+def create_user(base_reqres_url):
+    fake = Faker()
+    url = base_reqres_url + "/api/users"
+    request_body = {"name": fake.name(), "job": fake.job()}
+    response = requests.post(url, json=request_body)
+    assert response.status_code == 201
+    return response.json()
+
+
 def pytest_configure(config):
     logging.basicConfig(level=logging.INFO)
 

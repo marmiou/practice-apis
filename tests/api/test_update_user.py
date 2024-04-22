@@ -10,22 +10,10 @@ SINGLE_USER_API = "/api/user/"
 
 class TestUpdateUser:
 
-    @pytest.fixture(scope="session")
-    def create_user_fixture(self, base_reqres_url):
-        def _create_user():
-            fake = Faker()
-            url = base_reqres_url + LIST_API
-            request_body = {"name": fake.name(), "job": fake.job()}
-            response = requests.post(url, json=request_body)
-            assert response.status_code == 201
-            return response.json()
-
-        return _create_user
-
     @pytest.mark.api
     @pytest.mark.updateUsers
-    def test_put_created_user_success(self, base_reqres_url, create_user_fixture):
-        response_data = create_user_fixture()
+    def test_put_created_user_success(self, base_reqres_url, create_user):
+        response_data = create_user
         logging.info(f"Get initial data: {response_data}")
         url = base_reqres_url + SINGLE_USER_API + response_data["id"]
         data = {
@@ -43,8 +31,8 @@ class TestUpdateUser:
 
     @pytest.mark.api
     @pytest.mark.updateUsers
-    def test_patch_created_user_success(self, base_reqres_url, create_user_fixture):
-        response_data = create_user_fixture()
+    def test_patch_created_user_success(self, base_reqres_url, create_user):
+        response_data = create_user
         url = base_reqres_url + SINGLE_USER_API + response_data["id"]
         data = {"name": "Georgia"}
         update_response = requests.patch(url, data=data)
